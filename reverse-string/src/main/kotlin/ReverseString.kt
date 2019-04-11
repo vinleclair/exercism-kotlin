@@ -1,1 +1,1 @@
-fun reverse(str: String): String = str.reversed()
+fun reverse(str: String) = str.reversed()
