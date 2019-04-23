@@ -1,22 +1,14 @@
 object ScrabbleScore { 
 
-    fun scoreWord(word: String) : Int {
-        val letterValues = mapOf("AEIOULNRST" to 1,
-                                "DG" to 2,
-                                "BCMP" to 3,
-                                "FHVWY" to 4,
-                                "K" to 5,
-                                "JX" to 8,
-                                "QZ" to 10)
-        var score = 0
-        for (letter in word.toUpperCase()) {
-            for ((letters, value) in letterValues){
-                if (letters.contains(letter))
-                        score += value 
-                    }
+    fun scoreWord(word: String) = word.toUpperCase().sumBy {
+        when (it) {
+            'Q', 'Z' ->  10
+            'J', 'X' -> 8
+            'K' -> 5
+            'F', 'H', 'V', 'W', 'Y' -> 4
+            'B', 'C', 'M', 'P' -> 3
+            'D', 'G' -> 2
+            else -> 1 
         }
-        return score 
-
     }
-
 }
