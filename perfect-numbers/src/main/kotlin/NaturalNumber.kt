@@ -4,7 +4,7 @@ enum class Classification {
 }
 
 fun classify(naturalNumber: Int): Classification {
-    if (naturalNumber <= 0) throw RuntimeException("$naturalNumber is not a natural number.")
+    require (naturalNumber > 0) {"$naturalNumber is not a natural number."}
 
     val aliquotSum = getFactors(naturalNumber).sum()
 
@@ -18,7 +18,7 @@ fun classify(naturalNumber: Int): Classification {
 fun getFactors(number: Int): MutableList<Int> {
     var factors = mutableListOf<Int>()
 
-    for (num in 1..(number - 1)) {
+    for (num in 1..(number / 2)) {
         if (number % num == 0) {
             factors.add(num)
         }
